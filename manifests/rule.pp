@@ -98,6 +98,7 @@
 #                   su => true (optional).
 # uncompresscmd   - The String command to be used to uncompress log files
 #                   (optional).
+# custom_cfg      - Array of custom lines to be appended to the rules
 #
 # Examples
 #
@@ -123,6 +124,7 @@
 define logrotate::rule(
   Pattern[/^[a-zA-Z0-9\._-]+$/] $rulename           = $title,
   Enum['present','absent'] $ensure                  = 'present',
+  Array[String] $custom_cfg                         = [],
   Optional[Logrotate::Path] $path                   = undef,
   Optional[Boolean] $compress                       = undef,
   Optional[String] $compresscmd                     = undef,
