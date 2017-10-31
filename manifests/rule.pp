@@ -90,9 +90,12 @@
 #                   before unlinking them (optional).
 # start           - The Integer number to be used as the base for the extensions
 #                   appended to the rotated log files (optional).
-# su_owner        - A username String that logrotate should use to rotate a
+# su              - A Boolean specifying whether logrotate should rotate under
+#                   the specific su_owner and su_group instead of the default.
+#                   First available in logrotate 3.8.0. (optional)
+# su_user         - A String username that logrotate should use to rotate a
 #                   log file set instead of using the default if
-#                   su => true (optional).
+#                   su => true (optional)
 # su_group        - A String group name that logrotate should use to rotate a
 #                   log file set instead of using the default if
 #                   su => true (optional).
@@ -161,7 +164,7 @@ define logrotate::rule(
   Optional[String] $su_owner                        = undef,
   Optional[String] $su_group                        = undef,
   Optional[Boolean] $su                             = undef,
-  Optional[Logrotate::UserOrGroup] $su_owner        = undef,
+  Optional[Logrotate::UserOrGroup] $su_user         = undef,
   Optional[Logrotate::UserOrGroup] $su_group        = undef,
   Optional[String] $uncompresscmd                   = undef
 ) {
@@ -216,9 +219,10 @@ define logrotate::rule(
   }
 
   $_su_user = $su_user ? {
-    undef    => 'root',
-    default  => $su_user,
+    undef   => 'root',
+    default => $su_user,
   }
+
   $_su_group = $su_group ? {
     undef   => 'root',
     default => $su_group,
