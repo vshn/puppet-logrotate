@@ -194,6 +194,18 @@ describe 'logrotate::rule' do
     end
 
     ###########################################################################
+    # CUSTOM_CFG
+    context 'and custom_cfg => Array' do
+      let(:params) { { path: '/var/log/foo.log', custom_cfg: ['hourly'] } }
+
+      it {
+        is_expected.to contain_file('/etc/logrotate.d/test').\
+          with_content(%r{^  hourly$})
+      }
+
+    end
+
+    ###########################################################################
     # DATEFORMAT
     context 'and dateformat => -%Y%m%d' do
       let(:params) { { path: '/var/log/foo.log', dateformat: '-%Y%m%d' } }
