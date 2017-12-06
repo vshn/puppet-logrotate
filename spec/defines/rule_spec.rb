@@ -202,7 +202,6 @@ describe 'logrotate::rule' do
         is_expected.to contain_file('/etc/logrotate.d/test').\
           with_content(%r{^  hourly$})
       }
-
     end
 
     ###########################################################################
