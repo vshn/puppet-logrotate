@@ -62,6 +62,15 @@ describe 'logrotate' do
                                                                  'recurse' => true)
           end
         end
+
+        context 'logrotate class with create_base_rules set to to false' do
+          let(:params) { { create_base_rules: false } }
+
+          it do
+            is_expected.not_to contain_logrotate__rule('btmp')
+            is_expected.not_to contain_logrotate__rule('wtmp')
+          end
+        end
       end
     end
   end
