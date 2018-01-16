@@ -154,7 +154,19 @@ class { '::logrotate':
 }
 ```
 
+### Additional startup arguments
 
+With parameter `logrotate_args` you can specify additional startup arguments for logrotate. Configuration file is always added as the last argument for logrotate.
+
+This example tells logrotate to use an alternate state file and which command to use when mailing logs.
+
+```puppet
+class { '::logrotate':
+  ensure         => 'latest',
+  logrotate_args => ['-s /var/lib/logrotate/logrotate.status', '-m /usr/local/bin/mailer']
+  }
+}
+```
 ## Examples
 
 ```puppet
