@@ -24,9 +24,9 @@ describe 'logrotate::hourly' do
           it do
             is_expected.to contain_file('/etc/cron.hourly/logrotate').with(
               'ensure' => 'present',
-              'owner'   => 'root',
-              'group'   => 'root',
-              'mode'    => '0700'
+              'owner'  => 'root',
+              'group'  => 'root',
+              'mode'   => '0555'
             )
           end
         end
