@@ -111,7 +111,7 @@ describe 'logrotate::conf' do
         'owner' => 'root',
         'group' => 'root',
         'ensure' => 'present',
-        'mode' => '0444'
+        'mode' => '0644'
       ).with_content(%r{\ninclude \/etc\/logrotate.d\n})
     }
 
@@ -380,7 +380,7 @@ describe 'logrotate::conf' do
         'owner' => 'root',
         'group' => 'root',
         'ensure' => 'present',
-        'mode' => '0444'
+        'mode' => '0644'
       ).with_content(%r{\ninclude \/etc\/logrotate.d\n})
     }
   end

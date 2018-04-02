@@ -25,13 +25,13 @@ class logrotate::hourly (
     ensure => $dir_ensure,
     owner  => 'root',
     group  => 'root',
-    mode   => '0755',
+    mode   => $logrotate::rules_configdir_mode,
   }
   file { $logrotate::cron_hourly_file:
     ensure  => $ensure,
     owner   => 'root',
     group   => 'root',
-    mode    => '0555',
+    mode    => $logrotate::cron_file_mode,
     source  => 'puppet:///modules/logrotate/etc/cron.hourly/logrotate',
     require => [File["${logrotate::rules_configdir}/hourly"],Package['logrotate']],
   }

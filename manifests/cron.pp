@@ -38,7 +38,7 @@ define logrotate::cron (
     ensure  => $ensure,
     owner   => $logrotate::root_user,
     group   => $logrotate::root_group,
-    mode    => '0555',
+    mode    => $logrotate::cron_file_mode,
     content => template('logrotate/etc/cron/logrotate.erb'),
   }
 }
