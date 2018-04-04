@@ -29,7 +29,7 @@ describe 'logrotate::rule' do
           'owner' => 'root',
           'group' => 'root',
           'ensure' => 'present',
-          'mode' => '0444'
+          'mode' => '0644'
         ).with_content(%r{^/var/log/foo\.log \{\n\}\n})
       end
     end

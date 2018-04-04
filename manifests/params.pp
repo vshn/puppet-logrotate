@@ -188,4 +188,11 @@ class logrotate::params {
   $manage_package     = true
   $root_user          = 'root'
   $rules_configdir    = "${configdir}/logrotate.d"
+
+  # File modes (permissions)
+  # - These may need to be moved to the osfamily case statement
+  # - These are currently matching the RedHat RPM permissions
+  $cron_file_mode = '0700'
+  $logrotate_conf_mode = '0644'
+  $rules_configdir_mode = '0755'
 }

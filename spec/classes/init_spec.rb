@@ -22,7 +22,7 @@ describe 'logrotate' do
             #      'ensure'  => 'file',
             #      'owner'   => 'root',
             #      'group'   => 'root',
-            #      'mode'    => '0444',
+            #      'mode'    => '0644',
             #      'content' => 'template(\'logrotate/etc/logrotate.conf.erb\')',
             #      'source'  => 'puppet:///modules/logrotate/etc/logrotate.conf',
             #      'require' => 'Package[logrotate]',
@@ -36,7 +36,7 @@ describe 'logrotate' do
             is_expected.to contain_file('/etc/cron.daily/logrotate').with('ensure' => 'present',
                                                                           'owner'   => 'root',
                                                                           'group'   => 'root',
-                                                                          'mode'    => '0555')
+                                                                          'mode'    => '0700')
 
             is_expected.to contain_class('logrotate::defaults')
           end

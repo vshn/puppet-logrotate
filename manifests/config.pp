@@ -12,7 +12,7 @@ class logrotate::config{
     group   => $logrotate::root_group,
     purge   => $::logrotate::purge_configdir,
     recurse => $::logrotate::purge_configdir,
-    mode    => '0755',
+    mode    => $logrotate::rules_configdir_mode,
   }
 
   if $manage_cron_daily {

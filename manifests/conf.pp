@@ -104,7 +104,7 @@ define logrotate::conf (
     ensure  => $ensure,
     owner   => $logrotate::root_user,
     group   => $logrotate::root_group,
-    mode    => '0444',
+    mode    => $logrotate::logrotate_conf_mode,
     content => template('logrotate/etc/logrotate.conf.erb'),
   }
 
