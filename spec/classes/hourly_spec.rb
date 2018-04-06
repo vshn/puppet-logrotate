@@ -26,7 +26,7 @@ describe 'logrotate::hourly' do
               'ensure' => 'present',
               'owner'  => 'root',
               'group'  => 'root',
-              'mode'   => '0555'
+              'mode'   => '0700'
             )
           end
         end
