@@ -11,6 +11,7 @@ class logrotate::params {
       $conf_params = {
         su_group => undef,
       }
+      $base_rules = {}
       $rule_default = {
         missingok    => true,
         rotate_every => 'monthly',
