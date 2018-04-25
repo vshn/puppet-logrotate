@@ -11,16 +11,6 @@ class logrotate::params {
       $conf_params = {
         su_group => undef,
       }
-      $base_rules = {
-        'wtmp' => {
-          path        => '/var/log/wtmp',
-          create_mode => '0664',
-        },
-        'btmp' => {
-          path        => '/var/log/btmp',
-          create_mode => '0600',
-        },
-      }
       $rule_default = {
         missingok    => true,
         rotate_every => 'monthly',
