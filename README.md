@@ -26,6 +26,7 @@ You may, optionally, define logrotate defaults using this defined type.
 Parameters are the same as those for logrotate::rule.
 Using this type will automatically include a private class that will install
 and configure logrotate for you.
+You must not also declare the `logrotate` class if using this defined type as you will encounter a Puppet error if you attempt to do so.
 
 ## logrotate::rule
 
@@ -148,8 +149,11 @@ This example will ensure that the logrotate package is latest and that the `date
 class { '::logrotate':
   ensure => 'latest',
   config => {
-    dateext  => true,
-    compress => true,
+    dateext      => true,
+    compress     => true,
+    rotate       => 10,
+    rotate_every => 'week',
+    ifempty      => true,
   }
 }
 ```
