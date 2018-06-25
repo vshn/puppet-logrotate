@@ -4,6 +4,28 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v3.3.0](https://github.com/voxpupuli/puppet-logrotate/tree/v3.3.0) (2018-06-25)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-logrotate/compare/v3.2.1...v3.3.0)
+
+**Implemented enhancements:**
+
+- Allow change of file mode for generated files [\#70](https://github.com/voxpupuli/puppet-logrotate/issues/70)
+- Fix freebsd default rules [\#111](https://github.com/voxpupuli/puppet-logrotate/pull/111) ([kapouik](https://github.com/kapouik))
+- Fix Issue 70 add file mode parameters [\#109](https://github.com/voxpupuli/puppet-logrotate/pull/109) ([TJM](https://github.com/TJM))
+- Use logrotate::cron rather than file resource for hourly cron [\#105](https://github.com/voxpupuli/puppet-logrotate/pull/105) ([pjfbashton](https://github.com/pjfbashton))
+- Manage logrotate startup arguments [\#102](https://github.com/voxpupuli/puppet-logrotate/pull/102) ([ruriky](https://github.com/ruriky))
+
+**Closed issues:**
+
+- duplicate resource or dependency cycle when attempting to set default options [\#116](https://github.com/voxpupuli/puppet-logrotate/issues/116)
+
+**Merged pull requests:**
+
+- \(docs\) Update readme with warning note and bigger example of defaults [\#117](https://github.com/voxpupuli/puppet-logrotate/pull/117) ([GeoffWilliams](https://github.com/GeoffWilliams))
+- Remove docker nodesets [\#115](https://github.com/voxpupuli/puppet-logrotate/pull/115) ([bastelfreak](https://github.com/bastelfreak))
+- drop EOL OSs; fix puppet version range [\#113](https://github.com/voxpupuli/puppet-logrotate/pull/113) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v3.2.1](https://github.com/voxpupuli/puppet-logrotate/tree/v3.2.1) (2018-03-28)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-logrotate/compare/v3.2.0...v3.2.1)
@@ -73,9 +95,6 @@ These should not affect the functionality of the module.
 
 - wrong datatype for $config, s/String/Hash [\#78](https://github.com/voxpupuli/puppet-logrotate/pull/78) ([bastelfreak](https://github.com/bastelfreak))
 
-**Merged pull requests:**
-
-
 ## [v3.0.0](https://github.com/voxpupuli/puppet-logrotate/tree/v3.0.0) (2017-10-10)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-logrotate/compare/v2.0.0...v3.0.0)
@@ -106,7 +125,6 @@ These should not affect the functionality of the module.
 - Fix typo [\#58](https://github.com/voxpupuli/puppet-logrotate/pull/58) ([gabe-sky](https://github.com/gabe-sky))
 - Adding support for maxsize also in main config [\#57](https://github.com/voxpupuli/puppet-logrotate/pull/57) ([seefood](https://github.com/seefood))
 - Fix rubocop checks [\#53](https://github.com/voxpupuli/puppet-logrotate/pull/53) ([coreone](https://github.com/coreone))
-- Another attempt at FreeBSD support [\#52](https://github.com/voxpupuli/puppet-logrotate/pull/52) ([coreone](https://github.com/coreone))
 - Fixes \#34 - Ubuntu Xenial and up support [\#43](https://github.com/voxpupuli/puppet-logrotate/pull/43) ([edestecd](https://github.com/edestecd))
 - Fixes \#37 - Logrotate rule ERB template should not take variables from the scope object [\#38](https://github.com/voxpupuli/puppet-logrotate/pull/38) ([imriz](https://github.com/imriz))
 - Fix puppet-lint issues and bad style [\#32](https://github.com/voxpupuli/puppet-logrotate/pull/32) ([baurmatt](https://github.com/baurmatt))
@@ -129,7 +147,6 @@ These should not affect the functionality of the module.
 - remove special whitespace character [\#20](https://github.com/voxpupuli/puppet-logrotate/pull/20) ([jfroche](https://github.com/jfroche))
 - Update Gemfile for Rake/Ruby version dependencies [\#19](https://github.com/voxpupuli/puppet-logrotate/pull/19) ([ncsutmf](https://github.com/ncsutmf))
 - add official puppet 4 support [\#17](https://github.com/voxpupuli/puppet-logrotate/pull/17) ([mmckinst](https://github.com/mmckinst))
-- Feature/fix wtmp btmp [\#16](https://github.com/voxpupuli/puppet-logrotate/pull/16) ([robinbowes](https://github.com/robinbowes))
 
 ## [v1.3.0](https://github.com/voxpupuli/puppet-logrotate/tree/v1.3.0) (2015-11-05)
 
