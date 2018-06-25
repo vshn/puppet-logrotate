@@ -7,23 +7,33 @@ define logrotate::cron (
     default   => "/etc/cron.${name}/logrotate",
   }
 
-  $logrotate_path = $::logrotate::logrotate_bin
+  $logrotate_path = $logrotate::logrotate_bin
 
   if $name == 'hourly' {
-    $logrotate_arg = "${::logrotate::rules_configdir}/hourly"
+    $logrotate_conf = "${logrotate::rules_configdir}/hourly"
   } else {
-    $logrotate_arg = $::logrotate::logrotate_conf
+    $logrotate_conf = $logrotate::logrotate_conf
   }
+
+  # If the logrotation config file is not yet in the arguments, add it
+  if ! ($logrotate_conf in $logrotate::logrotate_args) {
+    $_logrotate_args = concat($logrotate::logrotate_args,$logrotate_conf)
+  }
+  else {
+    $_logrotate_args = $logrotate::logrotate_args
+  }
+
+  $logrotate_args = join($_logrotate_args, ' ')
 
   # FreeBSD does not have /etc/cron.daily, so we need to have Puppet maintain
   # a crontab entry
   if $::osfamily == 'FreeBSD' {
     if $name == 'hourly' {
       $cron_hour   = '*'
-      $cron_minute = $::logrotate::cron_hourly_minute
+      $cron_minute = $logrotate::cron_hourly_minute
     } else {
-      $cron_hour   = $::logrotate::cron_daily_hour
-      $cron_minute = $::logrotate::cron_daily_minute
+      $cron_hour   = $logrotate::cron_daily_hour
+      $cron_minute = $logrotate::cron_daily_minute
     }
 
     cron { "logrotate_${name}":
