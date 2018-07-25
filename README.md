@@ -173,6 +173,10 @@ class { '::logrotate':
 ```
 ## Examples
 
+#### Cron output
+
+Default the cron output is discarded if there is no error output. To enable this output, when you (for example) enable the verbose startup argument, enable the $cron_always_output boolean on the logrotate class.
+
 ```puppet
 logrotate::conf { '/etc/logrotate.conf':
   rotate       => 10,
