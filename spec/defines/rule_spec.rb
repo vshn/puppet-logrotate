@@ -586,10 +586,11 @@ describe 'logrotate::rule' do
             with_content(%r{^\s+su root admin$})
         }
       end
-
+    end
+    
     # su is false doesn't matter if user or group params are passed
     context 'su => false' do
-      let(:params) { { su: false } }
+      let(:params) { { su: false, path: '/var/log/foo.log' } }
 
       it {
         is_expected.to contain_file('/etc/logrotate.d/test').

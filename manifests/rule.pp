@@ -161,11 +161,9 @@ define logrotate::rule(
   Optional[Boolean] $shred                          = undef,
   Optional[Integer] $shredcycles                    = undef,
   Optional[Integer] $start                          = undef,
-  Optional[String] $su_owner                        = undef,
-  Optional[String] $su_group                        = undef,
   Optional[Boolean] $su                             = undef,
-  Optional[Logrotate::UserOrGroup] $su_user         = undef,
-  Optional[Logrotate::UserOrGroup] $su_group        = undef,
+  Optional[String] $su_user                         = undef,
+  Optional[String] $su_group                        = undef,
   Optional[String] $uncompresscmd                   = undef
 ) {
   case $ensure {
