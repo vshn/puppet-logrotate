@@ -87,7 +87,7 @@ describe 'logrotate::cron' do
         it {
           is_expected.to contain_file('/usr/local/bin/logrotate.test.sh').
             with_ensure('present').
-            with_content(%r{(else\n    echo "${OUTPUT}"\nfi)})
+            with_content(%r{(else\n    echo "\${OUTPUT}"\nfi)})
         }
       end
     end
