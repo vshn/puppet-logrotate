@@ -7,5 +7,9 @@ EXITVALUE=$?
 if [ $EXITVALUE != 0 ]; then
     /usr/bin/logger -t logrotate "ALERT exited abnormally with [$EXITVALUE]"
     echo "${OUTPUT}"
+<% if @cron_always_output -%>
+else
+    echo "${OUTPUT}"
+<% end -%>
 fi
 exit $EXITVALUE
