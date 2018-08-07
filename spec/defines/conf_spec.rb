@@ -124,6 +124,65 @@ describe 'logrotate::conf' do
       }
     end
 
+    context 'su => false' do
+      let(:params) do
+        { su: false }
+      end
+
+      it {
+        is_expected.to contain_file('/etc/logrotate.conf').
+          without_content(%r{^su .*$})
+      }
+    end
+
+    context 'su_user => apache' do
+      let(:params) do
+        { su: true,
+          su_user: 'apache' }
+      end
+
+      it {
+        is_expected.to contain_file('/etc/logrotate.conf').
+          with_content(%r{^su apache root$})
+      }
+
+      context 'su_group => apache' do
+        let(:params) do
+          { su: true,
+            su_user: 'apache',
+            su_group: 'apache' }
+        end
+
+        it {
+          is_expected.to contain_file('/etc/logrotate.conf').
+            with_content(%r{^su apache apache$})
+        }
+      end
+    end
+
+    context 'su_group => apache' do
+      let(:params) do
+        { su: true,
+          su_group: 'apache' }
+      end
+
+      it {
+        is_expected.to contain_file('/etc/logrotate.conf').
+          with_content(%r{^su root apache$})
+      }
+    end
+
+    context 'su => true' do
+      let(:params) do
+        { su: true }
+      end
+
+      it {
+        is_expected.to contain_file('/etc/logrotate.conf').
+          with_content(%r{^su root root$})
+      }
+    end
+
     context 'compressext => .bz2' do
       let(:params) { { compressext: '.bz2' } }
 
