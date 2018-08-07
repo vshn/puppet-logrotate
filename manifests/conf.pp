@@ -44,8 +44,9 @@ define logrotate::conf (
   Optional[Boolean] $shred                           = undef,
   Optional[Integer] $shredcycles                     = undef,
   Optional[Integer] $start                           = undef,
-  Optional[String] $su_user                          = undef,
-  Optional[String] $su_group                         = undef,
+  Boolean $su                                        = false,
+  String $su_user                                    = 'root',
+  String $su_group                                   = 'root',
   Optional[String] $uncompresscmd                    = undef
 ) {
 
@@ -68,15 +69,6 @@ define logrotate::conf (
       'day'   => 'daily',
       default => "${rotate_every}ly"
     }
-  }
-
-  $_su_user = $su_user ? {
-    undef    => 'root',
-    default  => $su_user,
-  }
-  $_su_group = $su_group ? {
-    undef   => 'root',
-    default => $su_group,
   }
 
   if $create_group and !$create_owner {

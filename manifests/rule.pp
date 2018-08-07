@@ -92,7 +92,7 @@
 #                   appended to the rotated log files (optional).
 # su              - A Boolean specifying whether logrotate should rotate under
 #                   the specific su_owner and su_group instead of the default.
-#                   First available in logrotate 3.8.0. (optional)
+#                   First available in logrotate 3.8.0.
 # su_user         - A String username that logrotate should use to rotate a
 #                   log file set instead of using the default if
 #                   su => true (optional)
@@ -161,9 +161,9 @@ define logrotate::rule(
   Optional[Boolean] $shred                          = undef,
   Optional[Integer] $shredcycles                    = undef,
   Optional[Integer] $start                          = undef,
-  Optional[Boolean] $su                             = undef,
-  Optional[String] $su_user                         = undef,
-  Optional[String] $su_group                        = undef,
+  Boolean $su                                       = false,
+  String $su_user                                   = 'root',
+  String $su_group                                  = 'root',
   Optional[String] $uncompresscmd                   = undef
 ) {
   case $ensure {
@@ -209,21 +209,6 @@ define logrotate::rule(
 
   if ($create_mode != undef) and ($create != true) {
     fail("Logrotate::Rule[${rulename}]: create_mode requires create")
-  }
-
-  $_su = $su ? {
-    undef   => false,
-    default => $su,
-  }
-
-  $_su_user = $su_user ? {
-    undef   => 'root',
-    default => $su_user,
-  }
-
-  $_su_group = $su_group ? {
-    undef   => 'root',
-    default => $su_group,
   }
 
   #############################################################################
