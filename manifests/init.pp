@@ -22,7 +22,8 @@ class logrotate (
   Stdlib::Filemode $rules_configdir_mode = $logrotate::params::rules_configdir_mode,
   String $root_user                      = $logrotate::params::root_user,
   String $root_group                     = $logrotate::params::root_group,
-  Array[String[1]] $logrotate_args       = []
+  Array[String[1]] $logrotate_args       = [],
+  Boolean $cron_always_output            = false,
 ) inherits logrotate::params {
 
   contain ::logrotate::install

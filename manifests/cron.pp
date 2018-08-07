@@ -23,6 +23,8 @@ define logrotate::cron (
     $_logrotate_args = $logrotate::logrotate_args
   }
 
+  $cron_always_output = $logrotate::cron_always_output
+
   $logrotate_args = join($_logrotate_args, ' ')
 
   # FreeBSD does not have /etc/cron.daily, so we need to have Puppet maintain
