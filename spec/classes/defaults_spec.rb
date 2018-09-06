@@ -14,7 +14,9 @@ describe 'logrotate' do
     context os, if: facts[:osfamily] == 'Debian' do
       let(:facts) { facts }
 
-      if facts[:operatingsystem] == 'Ubuntu' && facts[:operatingsystemmajrelease].to_i >= 14
+      it { is_expected.to compile.with_all_deps }
+
+      if facts[:operatingsystem] == 'Ubuntu'
         it {
           is_expected.to contain_logrotate__conf('/etc/logrotate.conf').with(
             'su_user' => 'root',
@@ -23,10 +25,7 @@ describe 'logrotate' do
         }
       else
         it {
-          is_expected.to contain_logrotate__conf('/etc/logrotate.conf').with(
-            'su_user' => nil,
-            'su_group' => nil
-          )
+          is_expected.to contain_logrotate__conf('/etc/logrotate.conf')
         }
       end
       it {
