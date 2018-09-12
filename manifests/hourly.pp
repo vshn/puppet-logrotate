@@ -34,12 +34,9 @@ class logrotate::hourly (
     group  => 'root',
     mode   => $logrotate::rules_configdir_mode,
   }
-
-  if $manage_cron_hourly {
-    logrotate::cron { 'hourly':
-      ensure  => $cron_ensure,
-      require => File["${logrotate::rules_configdir}/hourly"],
-    }
+  logrotate::cron { 'hourly':
+    ensure  => $cron_ensure,
+    require => File["${logrotate::rules_configdir}/hourly"],
   }
 
 }
