@@ -23,6 +23,11 @@ class logrotate::hourly (
     'present' => 'directory'
   }
 
+  $cron_ensure = $manage_cron_hourly ? {
+    true  => $ensure,
+    false => 'absent'
+  }
+
   file { "${logrotate::rules_configdir}/hourly":
     ensure => $dir_ensure,
     owner  => 'root',
@@ -32,7 +37,7 @@ class logrotate::hourly (
 
   if $manage_cron_hourly {
     logrotate::cron { 'daily': 
-      ensure  => $ensure,
+      ensure  => $icron_ensure,
       require => File["${logrotate::rules_configdir}/hourly"],
     }
   }
