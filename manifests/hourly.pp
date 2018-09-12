@@ -36,7 +36,7 @@ class logrotate::hourly (
   }
 
   if $manage_cron_hourly {
-    logrotate::cron { 'hourly': 
+    logrotate::cron { 'hourly':
       ensure  => $cron_ensure,
       require => File["${logrotate::rules_configdir}/hourly"],
     }

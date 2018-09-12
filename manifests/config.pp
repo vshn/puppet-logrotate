@@ -20,7 +20,7 @@ class logrotate::config{
     false => 'absent'
   }
 
-  logrotate::cron { 'daily': 
+  logrotate::cron { 'daily':
     ensure => $cron_ensure,
   }
 
