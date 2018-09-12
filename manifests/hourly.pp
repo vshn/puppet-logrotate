@@ -34,6 +34,7 @@ class logrotate::hourly (
     logrotate::cron { 'daily': 
       ensure  => $ensure,
       require => File["${logrotate::rules_configdir}/hourly"],
+    }
   }
 
 }
