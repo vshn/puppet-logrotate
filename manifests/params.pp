@@ -22,6 +22,10 @@ class logrotate::params {
       }
     }
     'Debian': {
+      $default_su = $facts['os']['name'] ? {
+        'Ubuntu' => true,
+        default  => false,
+      }
       $default_su_user = $facts['os']['name'] ? {
         'Ubuntu' => 'root',
         default  => undef,
@@ -31,6 +35,7 @@ class logrotate::params {
         default   => undef
       }
       $conf_params = {
+        su       => $default_su,
         su_user  => $default_su_user,
         su_group => $default_su_group,
       }
