@@ -16,7 +16,7 @@ class logrotate::hourly (
   Enum['present','absent'] $ensure = 'present'
 ) {
 
-  $manage_cron_hourly = $::logrotate::manage_cron_hourly
+  $manage_cron_hourly = $logrotate::manage_cron_hourly
 
   $dir_ensure = $ensure ? {
     'absent'  => $ensure,
