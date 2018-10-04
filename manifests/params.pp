@@ -178,7 +178,6 @@ class logrotate::params {
   $cron_daily_hour    = 1
   $cron_daily_minute  = 0
   $cron_hourly_minute = 1
-  $cron_hourly_file   = '/etc/cron.hourly/logrotate'
   $config_file        = "${configdir}/logrotate.conf"
   $logrotate_conf     = "${configdir}/logrotate.conf"
   $manage_package     = true
