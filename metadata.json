@@ -1,6 +1,6 @@
 {
   "name": "puppet-logrotate",
-  "version": "3.4.0",
+  "version": "3.4.1-rc0",
   "author": "Vox Pupuli",
   "summary": "Manage logrotate",
   "license": "MIT",
