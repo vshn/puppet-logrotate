@@ -36,7 +36,8 @@ and configure logrotate for you.
 
 ```
 namevar         - The String name of the rule.
-path            - The path String to the logfile(s) to be rotated.
+path            - The path(s) to the log file(s) to be rotated.  May be a 
+                  String or an Array of Strings.
 ensure          - The desired state of the logrotate rule as a String.  Valid
                   values are 'absent' and 'present' (default: 'present').
 compress        - A Boolean value specifying whether the rotated logs should
@@ -168,14 +169,24 @@ This example tells logrotate to use an alternate state file and which command to
 class { '::logrotate':
   ensure         => 'latest',
   logrotate_args => ['-s /var/lib/logrotate/logrotate.status', '-m /usr/local/bin/mailer']
+}
+```
+
+### Cron output
+
+By default, the cron output is discarded if there is no error output. To enable this output, when you (for example) enable the verbose startup argument, enable the `cron_always_output` boolean on the logrotate class:
+
+```puppet
+class { '::logrotate':
+  ensure              => 'latest',
+  cron_always_output  => true,
+  config              => {
+    ...
   }
 }
 ```
+
 ## Examples
-
-#### Cron output
-
-Default the cron output is discarded if there is no error output. To enable this output, when you (for example) enable the verbose startup argument, enable the $cron_always_output boolean on the logrotate class.
 
 ```puppet
 logrotate::conf { '/etc/logrotate.conf':
@@ -190,6 +201,13 @@ logrotate::rule { 'messages':
   rotate       => 5,
   rotate_every => 'week',
   postrotate   => '/usr/bin/killall -HUP syslogd',
+}
+
+logrotate::rule { 'servicelogs':
+  path         => ['/var/log/this-service.log', '/var/log/that-app.log'],
+  rotate       => 5,
+  rotate_every => 'day',
+  postrotate   => '/usr/bin/kill -HUP `cat /run/syslogd.pid`',
 }
 
 logrotate::rule { 'apache':
