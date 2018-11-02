@@ -3,6 +3,7 @@ class logrotate (
   String $ensure                         = present,
   Boolean $hieramerge                    = false,
   Boolean $manage_cron_daily             = true,
+  Boolean $manage_cron_hourly            = true,
   Boolean $create_base_rules             = true,
   Boolean $purge_configdir               = false,
   String $package                        = 'logrotate',

@@ -15,8 +15,13 @@ class logrotate::config{
     mode    => $logrotate::rules_configdir_mode,
   }
 
-  if $manage_cron_daily {
-    logrotate::cron { 'daily': }
+  $cron_ensure = $manage_cron_daily ? {
+    true  => 'present',
+    false => 'absent'
+  }
+
+  logrotate::cron { 'daily':
+    ensure => $cron_ensure,
   }
 
   if is_hash($config) {

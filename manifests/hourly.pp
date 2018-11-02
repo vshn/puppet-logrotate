@@ -16,9 +16,16 @@ class logrotate::hourly (
   Enum['present','absent'] $ensure = 'present'
 ) {
 
+  $manage_cron_hourly = $logrotate::manage_cron_hourly
+
   $dir_ensure = $ensure ? {
     'absent'  => $ensure,
     'present' => 'directory'
+  }
+
+  $cron_ensure = $manage_cron_hourly ? {
+    true  => $ensure,
+    false => 'absent'
   }
 
   file { "${logrotate::rules_configdir}/hourly":
@@ -27,8 +34,9 @@ class logrotate::hourly (
     group  => 'root',
     mode   => $logrotate::rules_configdir_mode,
   }
-  -> logrotate::cron { 'hourly':
-      ensure => $ensure,
-    }
+  logrotate::cron { 'hourly':
+    ensure  => $cron_ensure,
+    require => File["${logrotate::rules_configdir}/hourly"],
+  }
 
 }
