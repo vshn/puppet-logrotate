@@ -36,7 +36,7 @@ and configure logrotate for you.
 
 ```
 namevar         - The String name of the rule.
-path            - The path(s) to the log file(s) to be rotated.  May be a 
+path            - The path(s) to the log file(s) to be rotated.  May be a
                   String or an Array of Strings.
 ensure          - The desired state of the logrotate rule as a String.  Valid
                   values are 'absent' and 'present' (default: 'present').
@@ -126,7 +126,7 @@ shredcycles     - The Integer number of times shred should overwrite log files
                   before unlinking them (optional).
 start           - The Integer number to be used as the base for the extensions
                   appended to the rotated log files (optional).
-su_owner        - A username String that logrotate should use to rotate a
+su_user         - A username String that logrotate should use to rotate a
                   log file set instead of using the default if
                   su => true (optional).
 su_group        - A String group name that logrotate should use to rotate a

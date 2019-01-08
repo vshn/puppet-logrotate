@@ -91,7 +91,7 @@
 # start           - The Integer number to be used as the base for the extensions
 #                   appended to the rotated log files (optional).
 # su              - A Boolean specifying whether logrotate should rotate under
-#                   the specific su_owner and su_group instead of the default.
+#                   the specific su_user and su_group instead of the default.
 #                   First available in logrotate 3.8.0.
 # su_user         - A String username that logrotate should use to rotate a
 #                   log file set instead of using the default if

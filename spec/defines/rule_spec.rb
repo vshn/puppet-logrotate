@@ -535,7 +535,7 @@ describe 'logrotate::rule' do
     end
 
     ###########################################################################
-    # SU / SU_OWNER / SU_GROUP
+    # SU / SU_USER / SU_GROUP
     context 'and su => true' do
       # su is true and both user and group params are passed
       context 'and su_user => www-data and su_group => admin' do
