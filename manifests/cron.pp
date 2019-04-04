@@ -2,7 +2,7 @@
 define logrotate::cron (
   $ensure = 'present'
 ) {
-  $script_path = $::osfamily ? {
+  $script_path = $facts['osfamily'] ? {
     'FreeBSD' => "/usr/local/bin/logrotate.${name}.sh",
     default   => "/etc/cron.${name}/logrotate",
   }
@@ -29,7 +29,7 @@ define logrotate::cron (
 
   # FreeBSD does not have /etc/cron.daily, so we need to have Puppet maintain
   # a crontab entry
-  if $::osfamily == 'FreeBSD' {
+  if $facts['osfamily'] == 'FreeBSD' {
     if $name == 'hourly' {
       $cron_hour   = '*'
       $cron_minute = $logrotate::cron_hourly_minute
