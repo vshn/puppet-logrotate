@@ -3,7 +3,7 @@
 # Params class for logrotate module
 #
 class logrotate::params {
-  case $facts['osfamily'] {
+  case $facts['os']['family'] {
     'FreeBSD': {
       $configdir     = '/usr/local/etc'
       $root_group    = 'wheel'
