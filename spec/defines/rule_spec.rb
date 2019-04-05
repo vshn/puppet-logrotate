@@ -706,7 +706,7 @@ describe 'logrotate::rule' do
     end
     let(:facts) do
       {
-        osfamily: 'RedHat',
+        os: { family: 'RedHat' },
         operatingsystemmajrelease: 7
       }
     end

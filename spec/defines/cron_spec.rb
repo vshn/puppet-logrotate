@@ -54,7 +54,7 @@ describe 'logrotate::cron' do
     # Test FreeBSD separately as it is only partially supported by the module and not in the list of supported os.
     # When FreeBSD is added to the list of supported systems, these tests can be removed as they are already part of the test set above.
     context 'on FreeBDS' do
-      let(:facts) { { osfamily: 'FreeBSD' } }
+      let(:facts) { { os: { family: 'FreeBSD' } } }
 
       context 'With default params' do
         let(:title) { 'test' }

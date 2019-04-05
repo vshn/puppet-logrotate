@@ -4,7 +4,7 @@ describe 'logrotate' do
   let(:pre_condition) { 'class { "::logrotate": }' }
 
   context 'no osfamily' do
-    let(:facts) { { osfamily: 'fake' } }
+    let(:facts) { { os: { family: 'fake' } } }
 
     it {
       is_expected.to contain_logrotate__conf('/etc/logrotate.conf')
