@@ -214,11 +214,11 @@ define logrotate::rule(
   #############################################################################
   #
 
-  include ::logrotate
+  include logrotate
 
   case $rotate_every {
     'hour', 'hourly': {
-      include ::logrotate::hourly
+      include logrotate::hourly
       $rule_path = "${logrotate::rules_configdir}/hourly/${rulename}"
 
       file { "${logrotate::rules_configdir}/${rulename}":
