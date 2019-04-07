@@ -26,10 +26,10 @@ class logrotate (
   Boolean $cron_always_output            = false,
 ) inherits logrotate::params {
 
-  contain ::logrotate::install
-  contain ::logrotate::config
-  contain ::logrotate::rules
-  contain ::logrotate::defaults
+  contain logrotate::install
+  contain logrotate::config
+  contain logrotate::rules
+  contain logrotate::defaults
 
   Class['::logrotate::install']
   -> Class['::logrotate::config']
