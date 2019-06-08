@@ -71,6 +71,16 @@ describe 'logrotate' do
             is_expected.not_to contain_logrotate__rule('wtmp')
           end
         end
+
+        context 'with config => { prerotate => "/usr/bin/test", rotate_every => "daily" }' do
+          let(:params) { { config: { prerotate: '/usr/bin/test', rotate_every: 'daily' } } }
+
+          it {
+            is_expected.to contain_logrotate__conf('/etc/logrotate.conf').
+              with_prerotate('/usr/bin/test').
+              with_rotate_every('daily')
+          }
+        end
       end
     end
   end

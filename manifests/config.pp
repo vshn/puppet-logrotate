@@ -4,6 +4,7 @@ class logrotate::config{
   assert_private()
 
   $manage_cron_daily = $::logrotate::manage_cron_daily
+  $logrotate_conf    = $::logrotate::logrotate_conf
   $config            = $::logrotate::config
 
   file{ $::logrotate::rules_configdir:
@@ -24,9 +25,10 @@ class logrotate::config{
     ensure => $cron_ensure,
   }
 
-  if is_hash($config) {
-    $custom_config = {"${logrotate::logrotate_conf}" => $config}
-    create_resources('logrotate::conf', $custom_config)
+  if $config {
+    logrotate::conf { $logrotate_conf:
+      * => $config,
+    }
   }
 
 }
