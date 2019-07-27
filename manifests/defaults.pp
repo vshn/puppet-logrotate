@@ -8,9 +8,9 @@ class logrotate::defaults (
 
   assert_private()
 
-  if !defined( Logrotate::Conf[$::logrotate::params::config_file] ) {
-    logrotate::conf{ $::logrotate::params::config_file:
-      * => $::logrotate::params::conf_params,
+  if !defined( Logrotate::Conf[$logrotate::params::config_file] ) {
+    logrotate::conf{ $logrotate::params::config_file:
+      * => $logrotate::params::conf_params,
     }
   }
 
