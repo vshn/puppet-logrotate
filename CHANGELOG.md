@@ -4,9 +4,38 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v3.4.0](https://github.com/voxpupuli/puppet-logrotate/tree/v3.4.0) (2018-10-05)
+## [v4.0.0](https://github.com/voxpupuli/puppet-logrotate/tree/v4.0.0) (2019-07-28)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-logrotate/compare/v3.4.0...v4.0.0)
+
+**Breaking changes:**
+
+- modulesync 2.7.0 and drop puppet 4 [\#147](https://github.com/voxpupuli/puppet-logrotate/pull/147) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- "su" and "su\_owner" parameters are not accepted in "conf" [\#40](https://github.com/voxpupuli/puppet-logrotate/issues/40)
+- Use modern facts and $facts hash for osfamily [\#151](https://github.com/voxpupuli/puppet-logrotate/pull/151) ([simmerz](https://github.com/simmerz))
+- Introduce new top level parameter manage\_cron\_hourly which defaults … [\#137](https://github.com/voxpupuli/puppet-logrotate/pull/137) ([cliff-wakefield](https://github.com/cliff-wakefield))
+
+**Closed issues:**
+
+- Unable to disable cron for hourly rotations [\#136](https://github.com/voxpupuli/puppet-logrotate/issues/136)
+
+**Merged pull requests:**
+
+- Allow puppetlabs-stdlib 6 [\#156](https://github.com/voxpupuli/puppet-logrotate/pull/156) ([jaredledvina](https://github.com/jaredledvina))
+- Remove deprecated and unused is\_hash function [\#155](https://github.com/voxpupuli/puppet-logrotate/pull/155) ([baurmatt](https://github.com/baurmatt))
+- Remove occurences of su\_owner [\#148](https://github.com/voxpupuli/puppet-logrotate/pull/148) ([adriankirchner](https://github.com/adriankirchner))
+- Document possible use of Array for paths [\#145](https://github.com/voxpupuli/puppet-logrotate/pull/145) ([dleske](https://github.com/dleske))
+
+## [v3.4.0](https://github.com/voxpupuli/puppet-logrotate/tree/v3.4.0) (2018-10-06)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-logrotate/compare/v3.3.0...v3.4.0)
+
+**Breaking changes:**
+
+- Remove unused parameter: logrotate::cron\_hourly\_file [\#140](https://github.com/voxpupuli/puppet-logrotate/pull/140) ([ruriky](https://github.com/ruriky))
 
 **Implemented enhancements:**
 
@@ -27,6 +56,8 @@ These should not affect the functionality of the module.
 
 **Merged pull requests:**
 
+- modulesync 2.0.0 [\#142](https://github.com/voxpupuli/puppet-logrotate/pull/142) ([dhollinger](https://github.com/dhollinger))
+- Release 3.4.0 and allow puppet 6.x [\#141](https://github.com/voxpupuli/puppet-logrotate/pull/141) ([dhollinger](https://github.com/dhollinger))
 - enable acceptance tests centos 6/7 ubuntu 14/16 [\#135](https://github.com/voxpupuli/puppet-logrotate/pull/135) ([bastelfreak](https://github.com/bastelfreak))
 - allow puppetlabs/stdlib 5.x [\#132](https://github.com/voxpupuli/puppet-logrotate/pull/132) ([bastelfreak](https://github.com/bastelfreak))
 
