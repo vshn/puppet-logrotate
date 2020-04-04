@@ -124,7 +124,7 @@
 define logrotate::rule(
   Pattern[/^[a-zA-Z0-9\._-]+$/] $rulename           = $title,
   Enum['present','absent'] $ensure                  = 'present',
-  Array[String] $custom_cfg                         = [],
+  Array[String[1]] $custom_cfg                      = [],
   Optional[Logrotate::Path] $path                   = undef,
   Optional[Boolean] $compress                       = undef,
   Optional[String] $compresscmd                     = undef,
