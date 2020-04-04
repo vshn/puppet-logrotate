@@ -4,7 +4,32 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v4.0.0](https://github.com/voxpupuli/puppet-logrotate/tree/v4.0.0) (2019-07-28)
+## [v5.0.0](https://github.com/voxpupuli/puppet-logrotate/tree/v5.0.0) (2020-04-04)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-logrotate/compare/v4.0.0...v5.0.0)
+
+**Breaking changes:**
+
+- drop Ubuntu 14.04 support [\#163](https://github.com/voxpupuli/puppet-logrotate/pull/163) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- Add `custom_cfg` parameter to `logrotate::rule` allowing custom lines to be appended to rule files [\#66](https://github.com/voxpupuli/puppet-logrotate/pull/66) ([triforce](https://github.com/triforce))
+
+**Fixed bugs:**
+
+- Use /usr/sbin/logrotate as $logrotate\_bin default value with Gentoo [\#169](https://github.com/voxpupuli/puppet-logrotate/pull/169) ([usp-npe](https://github.com/usp-npe))
+
+**Closed issues:**
+
+- Wrong logrotate bin path with Gentoo [\#167](https://github.com/voxpupuli/puppet-logrotate/issues/167)
+
+**Merged pull requests:**
+
+- Remove duplicate CONTRIBUTING.md file [\#164](https://github.com/voxpupuli/puppet-logrotate/pull/164) ([dhoppe](https://github.com/dhoppe))
+- Clean up acceptance spec helper [\#162](https://github.com/voxpupuli/puppet-logrotate/pull/162) ([ekohl](https://github.com/ekohl))
+
+## [v4.0.0](https://github.com/voxpupuli/puppet-logrotate/tree/v4.0.0) (2019-09-19)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-logrotate/compare/v3.4.0...v4.0.0)
 
