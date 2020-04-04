@@ -71,7 +71,7 @@ class logrotate::params {
       }
       $configdir     = '/etc'
       $root_group    = 'root'
-      $logrotate_bin = '/usr/sbin/logrotate'
+      $logrotate_bin = '/usr/bin/logrotate'
       $base_rules = {
         'wtmp' => {
           path        => '/var/log/wtmp',
