@@ -49,18 +49,16 @@ define logrotate::conf (
   String $su_group                                   = 'root',
   Optional[String] $uncompresscmd                    = undef
 ) {
-
-
   case $mail {
     /\w+/: { $_mail = "mail ${mail}" }
     false: { $_mail = 'nomail' }
-    default: { }
+    default: {}
   }
 
   case $olddir {
     /\w+/: { $_olddir = "olddir ${olddir}" }
     false: { $_olddir = 'noolddir' }
-    default: { }
+    default: {}
   }
 
   if $rotate_every {

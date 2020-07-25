@@ -1,6 +1,5 @@
 # make sure logrotate is installed
-class logrotate::install{
-
+class logrotate::install {
   assert_private()
 
   if $logrotate::manage_package {
@@ -8,5 +7,4 @@ class logrotate::install{
       ensure => $logrotate::ensure,
     }
   }
-
 }
