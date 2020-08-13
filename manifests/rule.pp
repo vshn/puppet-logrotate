@@ -124,7 +124,7 @@
 #     rotate       => 3,
 #     postrotate   => '/etc/init.d/nginx restart',
 #   }
-define logrotate::rule(
+define logrotate::rule (
   Pattern[/^[a-zA-Z0-9\._-]+$/] $rulename           = $title,
   Enum['present','absent'] $ensure                  = 'present',
   Array[String[1]] $custom_cfg                      = [],
@@ -174,7 +174,7 @@ define logrotate::rule(
         fail("Logrotate::Rule[${rulename}]: path not specified")
       }
     }
-    'absent': { }
+    'absent': {}
     default: {
       fail("Logrotate::Rule[${rulename}]: invalid ensure value")
     }
@@ -183,11 +183,11 @@ define logrotate::rule(
   case $mail {
     /\w+/: { $_mail = "mail ${mail}" }
     false: { $_mail = 'nomail' }
-    default: { }
+    default: {}
   }
 
   case $olddir {
-    undef: { }
+    undef: {}
     false: { $_olddir = 'noolddir' }
     default: {
       $_olddir = "olddir ${olddir}"

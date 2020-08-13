@@ -25,7 +25,6 @@ class logrotate (
   Array[String[1]] $logrotate_args       = [],
   Boolean $cron_always_output            = false,
 ) inherits logrotate::params {
-
   contain logrotate::install
   contain logrotate::config
   contain logrotate::rules
