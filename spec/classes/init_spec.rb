@@ -16,6 +16,24 @@ describe 'logrotate' do
           end
 
           it do
+            is_expected.to contain_file('/etc/logrotate.d/hourly').with(
+              'ensure' => 'directory',
+              'owner'  => 'root',
+              'group'  => 'root',
+              'mode'   => '0755'
+            )
+          end
+
+          it do
+            is_expected.to contain_file('/etc/cron.hourly/logrotate').with(
+              'ensure' => 'present',
+              'owner'  => 'root',
+              'group'  => 'root',
+              'mode'   => '0700'
+            )
+          end
+
+          it do
             is_expected.to contain_package('logrotate').with_ensure('present')
 
             #    is_expected.to contain_file('/etc/logrotate.conf').with({
@@ -80,6 +98,13 @@ describe 'logrotate' do
               with_prerotate('/usr/bin/test').
               with_rotate_every('daily')
           }
+        end
+
+        context 'with ensure => absent' do
+          let(:params) { { ensure_cron_hourly: 'absent' } }
+
+          it { is_expected.to contain_file('/etc/logrotate.d/hourly').with_ensure('absent') }
+          it { is_expected.to contain_file('/etc/cron.hourly/logrotate').with_ensure('absent') }
         end
       end
     end

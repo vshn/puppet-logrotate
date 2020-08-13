@@ -6,25 +6,22 @@
 # Examples
 #
 #   # Set up hourly logrotate jobs
-#   include logrotate::hourly
+#   class { 'logrotate':
+#     manage_cron_hourly => true,
+#   }
 #
 #   # Remove hourly logrotate job support
-#   class { 'logrotate::hourly':
-#     ensure => absent,
+#   class { 'logrotate':
+#     manage_cron_hourly => true,
+#     ensure_cron_hourly => absent,
 #   }
 class logrotate::hourly (
-  Enum['present','absent'] $ensure = 'present'
 ) {
-  $manage_cron_hourly = $logrotate::manage_cron_hourly
+  assert_private()
 
-  $dir_ensure = $ensure ? {
-    'absent'  => $ensure,
+  $dir_ensure = $logrotate::ensure_cron_hourly ? {
+    'absent'  => $logrotate::ensure_cron_hourly,
     'present' => 'directory'
-  }
-
-  $cron_ensure = $manage_cron_hourly ? {
-    true  => $ensure,
-    false => 'absent'
   }
 
   file { "${logrotate::rules_configdir}/hourly":
@@ -33,8 +30,11 @@ class logrotate::hourly (
     group  => 'root',
     mode   => $logrotate::rules_configdir_mode,
   }
-  logrotate::cron { 'hourly':
-    ensure  => $cron_ensure,
-    require => File["${logrotate::rules_configdir}/hourly"],
+
+  if $logrotate::manage_cron_hourly {
+    logrotate::cron { 'hourly':
+      ensure  => $logrotate::ensure_cron_hourly,
+      require => File["${logrotate::rules_configdir}/hourly"],
+    }
   }
 }
