@@ -242,6 +242,6 @@ define logrotate::rule (
     group   => $logrotate::root_group,
     mode    => $logrotate::logrotate_conf_mode,
     content => template('logrotate/etc/logrotate.d/rule.erb'),
-    require => Class['::logrotate::config'],
+    require => Class['logrotate::config'],
   }
 }

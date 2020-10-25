@@ -33,8 +33,8 @@ class logrotate (
   contain logrotate::defaults
   contain logrotate::hourly
 
-  Class['::logrotate::install']
-  -> Class['::logrotate::config']
-  -> Class['::logrotate::rules']
-  -> Class['::logrotate::defaults']
+  Class['logrotate::install']
+  -> Class['logrotate::config']
+  -> Class['logrotate::rules']
+  -> Class['logrotate::defaults']
 }
