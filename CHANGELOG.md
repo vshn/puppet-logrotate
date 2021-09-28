@@ -4,6 +4,32 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v6.0.0](https://github.com/voxpupuli/puppet-logrotate/tree/v6.0.0) (2021-09-28)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-logrotate/compare/v5.0.0...v6.0.0)
+
+**Breaking changes:**
+
+- Drop EoL Puppet 5. Ubuntu 16 and Debian 8 support [\#185](https://github.com/voxpupuli/puppet-logrotate/pull/185) ([bastelfreak](https://github.com/bastelfreak))
+- Drop EOL EL6 support [\#179](https://github.com/voxpupuli/puppet-logrotate/pull/179) ([ekohl](https://github.com/ekohl))
+- Fix cron management [\#174](https://github.com/voxpupuli/puppet-logrotate/pull/174) ([crazymind1337](https://github.com/crazymind1337))
+
+**Implemented enhancements:**
+
+- Enable Puppet 7 support [\#184](https://github.com/voxpupuli/puppet-logrotate/pull/184) ([bastelfreak](https://github.com/bastelfreak))
+
+**Closed issues:**
+
+- version 4 doesn't obey manage\_cron\_daily parameter [\#161](https://github.com/voxpupuli/puppet-logrotate/issues/161)
+- how to disable file { $logrotate::cron\_hourly\_file:  in hourly.pp  [\#103](https://github.com/voxpupuli/puppet-logrotate/issues/103)
+
+**Merged pull requests:**
+
+- Allow stdlib 8.0.0 [\#182](https://github.com/voxpupuli/puppet-logrotate/pull/182) ([smortex](https://github.com/smortex))
+- Resolve puppet-lint notices [\#175](https://github.com/voxpupuli/puppet-logrotate/pull/175) ([jcpunk](https://github.com/jcpunk))
+- modulesync 3.0.0 & puppet-lint updates [\#173](https://github.com/voxpupuli/puppet-logrotate/pull/173) ([bastelfreak](https://github.com/bastelfreak))
+- Use voxpupuli-acceptance [\#172](https://github.com/voxpupuli/puppet-logrotate/pull/172) ([ekohl](https://github.com/ekohl))
+
 ## [v5.0.0](https://github.com/voxpupuli/puppet-logrotate/tree/v5.0.0) (2020-04-04)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-logrotate/compare/v4.0.0...v5.0.0)
@@ -95,7 +121,7 @@ These should not affect the functionality of the module.
 - Allow change of file mode for generated files [\#70](https://github.com/voxpupuli/puppet-logrotate/issues/70)
 - Fix freebsd default rules [\#111](https://github.com/voxpupuli/puppet-logrotate/pull/111) ([kapouik](https://github.com/kapouik))
 - Fix Issue 70 add file mode parameters [\#109](https://github.com/voxpupuli/puppet-logrotate/pull/109) ([TJM](https://github.com/TJM))
-- Use logrotate::cron rather than file resource for hourly cron [\#105](https://github.com/voxpupuli/puppet-logrotate/pull/105) ([pjfbashton](https://github.com/pjfbashton))
+- Use logrotate::cron rather than file resource for hourly cron [\#105](https://github.com/voxpupuli/puppet-logrotate/pull/105) ([pavloos](https://github.com/pavloos))
 - Manage logrotate startup arguments [\#102](https://github.com/voxpupuli/puppet-logrotate/pull/102) ([ruriky](https://github.com/ruriky))
 
 **Closed issues:**
